@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">CLC</string>
-
+    <string name="drawer_open">drawer open</string>
+    <string name="drawer_close">drawer close</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="productstitle_ND">Products</string>
+    <string name="servicestitle_ND">Services</string>
+    <string name="accountstitle_ND">My Account</string>
+    <string name="Productfragment_Title">Products</string>
+    <string name="Servicefragmnet_Title">Services</string>
+    <string name="Accountfragment_Title">My Account</string>
+    <string name="Mobile_number_text">Mobile</string>
+    <string name="send_code_button">Send code</string>
+    <string name="OTP_text">OTP</string>
+    <string name="verify_code_button">Verify code</string>
 </resources>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="clc_cochin.clc.LoginActivity">
+
+    <TextView
+        android:id="@+id/Mobile_no_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Mobile_no"
+        android:layout_alignEnd="@+id/Signin_button"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="18dp"
+        android:text="@string/Mobile_number_text"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/Mobile_no"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/Signin_button"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="14dp"
+        android:layout_marginStart="12dp"
+        android:inputType="phone"
+        android:maxLength="10" />
+
+    <Button
+        android:id="@+id/Signin_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/Mobile_no"
+        android:layout_marginBottom="233dp"
+        android:layout_marginStart="57dp"
+        android:text="@string/send_code_button" />
+
+    <TextView
+        android:id="@+id/Code_auth_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/Mobile_no_text"
+        android:layout_alignBottom="@+id/Mobile_no_text"
+        android:layout_alignEnd="@+id/Code_auth_button"
+        android:layout_marginEnd="35dp"
+        android:text="@string/OTP_text"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/Code_auth"
+        android:layout_width="110dp"
+        android:layout_height="52dp"
+        android:layout_alignBottom="@+id/Mobile_no"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/Mobile_no"
+        android:hint="  -- -- -- -- -- --"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/Code_auth_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/Code_auth"
+        android:layout_below="@+id/Mobile_no"
+        android:text="@string/verify_code_button" />
+
+
+
+</RelativeLayout>

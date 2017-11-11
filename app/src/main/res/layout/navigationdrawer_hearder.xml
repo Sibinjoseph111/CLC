@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="180dp"
+    android:background="@color/Toolbar_color">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Accountimage_ND"
+        android:src="@drawable/ic_action_gamepad"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Accountimage_ND"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="38dp"
+        android:layout_toEndOf="@+id/Accountimage_ND"
+        android:background="#fff"
+        android:text="Your name" />
+</RelativeLayout>

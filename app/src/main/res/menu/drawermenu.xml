@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+
+        <item
+            android:id="@+id/Productsfragment_ND"
+            android:title="@string/productstitle_ND"
+            android:icon="@drawable/ic_action_gamepad"
+            >
+
+        </item>
+
+        <item
+            android:id="@+id/Servicefragment_ND"
+            android:title="@string/servicestitle_ND"
+            android:icon="@drawable/ic_action_keyboard"
+            >
+
+        </item>
+        <item
+            android:id="@+id/Accountfragemnt_ND"
+            android:title="@string/accountstitle_ND"
+            android:icon="@drawable/ic_action_new_account"
+            >
+
+        </item>
+    </group>
+</menu>
