@@ -32,9 +32,13 @@ public class LoginActivity extends AppCompatActivity {
         public PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
         public String mVerificationId;
 
+    private View mProgressView;
+    private View mLoginFormView;
 
 
-        @Override
+
+
+    @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_login);
@@ -58,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                     String num=phoneNum.getText().toString();
                     startPhoneNumberVerification(num);                  // call function for receive OTP 6 digit code
 
+
                 }
             });
 
@@ -67,6 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     String code=Code.getText().toString();
                     verifyPhoneNumberWithCode(mVerificationId,code);                 //call function for verify code
+
 
                 }
             });
@@ -117,7 +123,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "sign in successfull", Toast.LENGTH_SHORT).show();
                                 // [START_EXCLUDE]
                                 authstate=1;
-                                Intent getnewintent = new Intent(LoginActivity.this,MainActivity.class);
+                                Intent getnewintent = new Intent(LoginActivity.this,UserdetailsActivity.class);
                                 startActivity(getnewintent);
                                 finish();
                                 // [END_EXCLUDE]

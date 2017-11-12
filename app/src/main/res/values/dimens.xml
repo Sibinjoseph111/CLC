@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="Userdetails_SV_Paddtop">50dp</dimen>
+    <dimen name="Userdetails_Paddside">20dp</dimen>
+    <dimen name="Userdetails_lineheight">60dp</dimen>
+</resources>

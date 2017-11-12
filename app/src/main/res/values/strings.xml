@@ -14,4 +14,11 @@
     <string name="send_code_button">Send code</string>
     <string name="OTP_text">OTP</string>
     <string name="verify_code_button">Verify code</string>
+    <string name="Userdeatils_Username_hint">Full Name *</string>
+    <string name="Userdeatils_area_hint">Locality, area or street *</string>
+    <string name="Userdetails_Buildingno_hint">Flat no., Building name *</string>
+    <string name="Userdetails_pincode_hint">Pincode *</string>
+    <string name="Userdetails_mobile_hint">Mobile no *</string>
+    <string name="Userdetails_city_hint">City *</string>
+    <string name="Userdetails_Add_BT_text">Add details</string>
 </resources>

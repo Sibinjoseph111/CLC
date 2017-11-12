@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context="clc_cochin.clc.UserdetailsActivity">
+
+    <include
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        layout="@layout/toolbar_layout"/>
+
+    <ProgressBar
+        android:id="@+id/Userdetails_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:id="@+id/Userdetails_SV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/Userdetails_Paddside"
+        android:paddingRight="@dimen/Userdetails_Paddside"
+        android:paddingTop="@dimen/Userdetails_SV_Paddtop">
+        <LinearLayout
+            android:id="@+id/Userdetails_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <EditText
+                android:id="@+id/Username_ET"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/Userdetails_lineheight"
+                android:hint="@string/Userdeatils_Username_hint"
+                android:inputType="textPersonName"
+                />
+            <EditText
+                android:id="@+id/Phone_ET"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/Userdetails_lineheight"
+                android:hint="@string/Userdetails_mobile_hint"
+                android:inputType="phone"
+                />
+            <EditText
+                android:id="@+id/City_ET"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/Userdetails_lineheight"
+                android:hint="@string/Userdetails_city_hint"
+                android:inputType="textCapSentences"
+                />
+            <EditText
+                android:id="@+id/Area_ET"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/Userdetails_lineheight"
+                android:hint="@string/Userdeatils_area_hint"
+                android:inputType="textCapSentences"/>
+            <EditText
+                android:id="@+id/BuildingNo_ET"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/Userdetails_lineheight"
+                android:hint="@string/Userdetails_Buildingno_hint"
+                android:inputType="textCapSentences"/>
+            <EditText
+                android:id="@+id/Pincode_ET"
+                android:layout_width="150dp"
+                android:layout_height="@dimen/Userdetails_lineheight"
+                android:hint="@string/Userdetails_pincode_hint"
+                android:inputType="textPostalAddress"
+                />
+            <Button
+                android:id="@+id/Adddetails_BT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/Userdetails_Add_BT_text"
+                android:backgroundTint="#8d8e8e"
+                android:onClick="Adduserdetails"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
