@@ -32,9 +32,6 @@ public class LoginActivity extends AppCompatActivity {
         public PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
         public String mVerificationId;
 
-    private View mProgressView;
-    private View mLoginFormView;
-
 
 
 
@@ -121,6 +118,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                 FirebaseUser user = task.getResult().getUser();
                                 Toast.makeText(getApplicationContext(), "sign in successfull", Toast.LENGTH_SHORT).show();
+
                                 // [START_EXCLUDE]
                                 authstate=1;
                                 Intent getnewintent = new Intent(LoginActivity.this,UserdetailsActivity.class);
