@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -34,12 +35,29 @@ public class UserdetailsActivity extends AppCompatActivity {
 
 
 
+    public boolean ValidateForm(int[] ids){
+
+        boolean isempty= false;
+        for (int id:ids){
+
+            EditText et= findViewById(id);
+
+            if (TextUtils.isEmpty(et.getText().toString())){
+                et.setError("Must enter value");
+                isempty=true;
+            }
+        }
+     return isempty;
+
+    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userdetails);
+
+
         Currentuser= mAuth.getInstance().getCurrentUser();
         final String Userid= Currentuser.getUid();
 
@@ -51,6 +69,11 @@ public class UserdetailsActivity extends AppCompatActivity {
         Pincode=findViewById(R.id.Pincode_ET);
         Addudetails=findViewById(R.id.Adddetails_BT);
 
+        Mobileno.setText(Currentuser.getPhoneNumber());
+
+        final int[] ids= new int[]{
+                R.id.Username_ET,R.id.City_ET,R.id.City_ET,R.id.Phone_ET,R.id.Area_ET,R.id.BuildingNo_ET,R.id.Pincode_ET
+        };
 
 
 
@@ -64,17 +87,20 @@ public class UserdetailsActivity extends AppCompatActivity {
                 String building=Buildingno.getText().toString();
                 String pincode=Pincode.getText().toString();
 
-                Map<String, Object> city = new HashMap<>();
-                city.put("name",name );
-                city.put("Mobile",mobile );
-                city.put("City",cityy );
-                city.put("Area",area );
-                city.put("Building",building );
-                city.put("Pincode",pincode );
+                if (!ValidateForm(ids))
+                {
+
+                Map<String, Object> user = new HashMap<>();
+                user.put("name",name );
+                user.put("Mobile",mobile );
+                user.put("City",cityy );
+                user.put("Area",area );
+                user.put("Building",building );
+                user.put("Pincode",pincode );
 
 
                 db.collection("usrrr").document(Userid)
-                        .set(city)
+                        .set(user)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
@@ -88,25 +114,34 @@ public class UserdetailsActivity extends AppCompatActivity {
                             public void onFailure(@NonNull Exception e) {
                                 Log.w(TAG, "Error writing document", e);
                                 userflag= false;
-                                Toast.makeText(UserdetailsActivity.this,"errod db",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(UserdetailsActivity.this,"Errod creating Database",Toast.LENGTH_SHORT).show();
                             }
                         });
 
-                if(userflag=true){
+                if(!userflag){
                     Intent intent= new Intent(UserdetailsActivity.this,MainActivity.class);
                     startActivity(intent);
                     finish();
+
+                }
+                else {
+                    Intent oldintent= new Intent(UserdetailsActivity.this,LoginActivity.class);
+                    startActivity(oldintent);
+                    finish();
+
+                }
+
+            }
+
+            else {
+                    Toast.makeText(UserdetailsActivity.this, "Please complete all the fields",Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
 
-
-
-
-
-
     }
+
 
 
 }

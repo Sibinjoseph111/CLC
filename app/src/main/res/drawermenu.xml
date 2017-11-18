@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+
+    <item
+        android:id="@+id/homeid"
+      android:title="HOME"
+        android:icon="@drawable/ic_action_new_account"
+    >
+
+    </item>
+
+        <item
+            android:id="@+id/ACCOUNT"
+            android:title="Account"
+            android:icon="@drawable/ic_action_gamepad"
+            >
+
+        </item>
+        <item
+            android:id="@+id/GAMES"
+            android:title="Account"
+            android:icon="@drawable/ic_action_keyboard"
+            >
+
+        </item>
+    </group>
+<item
+    android:title="SOCIAL"
+    android:Gravity="bottom"
+    >
+    <menu>
+        <item android:title="ADDTO GROUP"
+            android:id="@+id/addtogroup"
+            android:icon="@drawable/ic_action_keyboard"
+            android:Gravity="bottom"/>
+        <item android:title="GROUP"
+            android:id="@+id/group"
+            android:icon="@drawable/ic_action_gamepad"/>
+    </menu>
+
+</item>
+
+</menu>
