@@ -78,6 +78,10 @@
         android:layout_alignStart="@+id/Code_auth"
         android:layout_below="@+id/Mobile_no"
         android:text="@string/verify_code_button" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        />
 
 
 
