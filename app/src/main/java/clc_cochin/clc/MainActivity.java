@@ -12,8 +12,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean shouldLoadProductFragOnBackPress = false;
     public static int navItemIndex = 0;
     public FirebaseAuth mAuth;
-
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     private void Load_Product_fragment() {
         navItemIndex = 0;
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -131,5 +135,21 @@ public class MainActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
     }
 
+    public void del(View view) {db.collection("products").document("test")
+            .delete()
+            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+
+                }
+            })
+            .addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+
+                }
+            });
+
+    }
 }
 //test

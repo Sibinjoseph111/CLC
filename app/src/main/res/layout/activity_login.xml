@@ -78,11 +78,6 @@
         android:layout_alignStart="@+id/Code_auth"
         android:layout_below="@+id/Mobile_no"
         android:text="@string/verify_code_button" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="dfgd"
-        />
 
     <LinearLayout
         android:orientation="vertical"
@@ -98,27 +93,6 @@
             android:visibility="gone"
             />
     </LinearLayout>
-<!--
-    <ProgressBar
-        android:id="@+id/progressBar1"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:visibility="visible"
-        android:progressTint="@color/Toolbar_color"
-        android:progressDrawable="@color/Toolbar_color"/>
--->
-
-
-      <!--  <ProgressBar
-            android:id="@+id/pbHeaderProgress"
-            android:style="@style/Spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:layout_centerInParent="true">
-        </ProgressBar>-->
 
 
 </RelativeLayout>
