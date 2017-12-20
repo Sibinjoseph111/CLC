@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,6 +33,8 @@ public class LoginActivity extends AppCompatActivity {
         public PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
         public String mVerificationId;
 
+    private ProgressBar spinner;
+
 
 
 
@@ -53,11 +56,20 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
+
+        spinner = (ProgressBar)findViewById(R.id.progressBar1);
+
+
             sent_.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View v) {
                     String num=phoneNum.getText().toString();
-                    startPhoneNumberVerification(num);                  // call function for receive OTP 6 digit code
+
+
+                        startPhoneNumberVerification(num);                  // call function for receive OTP 6 digit code
+
+                        spinner.setVisibility(View.VISIBLE);
 
 
                 }
@@ -74,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
         }
+
 
         @Override
         public void onStart() {
@@ -167,6 +180,7 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onVerificationFailed(FirebaseException e) {
                     // This callback is invoked in an invalid request for verification is made,
+                Toast.makeText(LoginActivity.this,"Please check the code",Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -183,9 +197,21 @@ public class LoginActivity extends AppCompatActivity {
                     mResendToken = token;
                     Toast.makeText(LoginActivity.this, "CODE SENT", Toast.LENGTH_SHORT).show();
 
-
+                    spinner.setVisibility(View.GONE);
 
                 }
             };
         }
+
+    // [START resend_verification]
+    public void resendVerificationCode(String phoneNumber,
+                                       PhoneAuthProvider.ForceResendingToken token) {
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                phoneNumber,        // Phone number to verify
+                60,                 // Timeout duration
+                TimeUnit.SECONDS,   // Unit of timeout
+                LoginActivity.this,           //a reference to an activity if this method is in a custom service
+                mCallbacks);        // resending
+        // [END start_phone_auth]
+    }
     }

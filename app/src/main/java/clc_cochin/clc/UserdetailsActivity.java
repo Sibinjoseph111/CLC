@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -104,7 +103,6 @@ public class UserdetailsActivity extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Log.d(TAG, "DocumentSnapshot successfully written!");
                                 userflag= true;
                                 Toast.makeText(UserdetailsActivity.this,"Data added successfully",Toast.LENGTH_SHORT).show();
                             }
@@ -112,7 +110,6 @@ public class UserdetailsActivity extends AppCompatActivity {
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Log.w(TAG, "Error writing document", e);
                                 userflag= false;
                                 Toast.makeText(UserdetailsActivity.this,"Errod creating Database",Toast.LENGTH_SHORT).show();
                             }
