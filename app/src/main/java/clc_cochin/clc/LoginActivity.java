@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +24,8 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import java.util.concurrent.TimeUnit;
 
 public class LoginActivity extends AppCompatActivity {
+
+
 
         EditText phoneNum;
         EditText Code;           //// two edit text one for enter phone number other for enter OTP code
@@ -64,14 +67,24 @@ public class LoginActivity extends AppCompatActivity {
 
                 @Override
                 public void onClick(View v) {
-                    String num=phoneNum.getText().toString();
+
+                    boolean isempty=false;
+
+                    EditText et= findViewById(R.id.Mobile_no);
+
+                    if (TextUtils.isEmpty(et.getText().toString())){
+                        et.setError("Must enter value");
+                        isempty=true;
+                    }
+                    if(!isempty) {
+                        String num = phoneNum.getText().toString();
 
 
                         startPhoneNumberVerification(num);                  // call function for receive OTP 6 digit code
 
                         spinner.setVisibility(View.VISIBLE);
 
-
+                    }
                 }
             });
 
