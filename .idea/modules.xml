@@ -3,10 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CLC.iml" filepath="$PROJECT_DIR$/CLC.iml" />
-      <module fileurl="file://$PROJECT_DIR$/CLC.iml" filepath="$PROJECT_DIR$/CLC.iml" />
-      <module fileurl="file://C:\Users\HP\CLC\.idea\CLC.iml" filepath="C:\Users\HP\CLC\.idea\CLC.iml" />
-      <module fileurl="file://C:\Users\Shyam PC\AndroidStudioProjects\CLC\CLC.iml" filepath="C:\Users\Shyam PC\AndroidStudioProjects\CLC\CLC.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
