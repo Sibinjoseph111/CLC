@@ -18,6 +18,10 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import clc_cochin.clc.Fragment.AccountFragment;
+import clc_cochin.clc.Fragment.ProductFragment;
+import clc_cochin.clc.Fragment.ServiceFragment;
+
 public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;

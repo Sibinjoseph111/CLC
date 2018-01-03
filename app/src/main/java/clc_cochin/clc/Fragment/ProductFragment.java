@@ -1,4 +1,4 @@
-package clc_cochin.clc;
+package clc_cochin.clc.Fragment;
 
 
 import android.content.Context;
@@ -24,12 +24,14 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.List;
 
 import clc_cochin.clc.Adapter.ProductAdapter;
+import clc_cochin.clc.R;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ProductFragment extends Fragment {
+
     private static final String TAG = "ProductFragment";
     private FirebaseFirestore firestoreDB;
     private RecyclerView productRecyclerView;
@@ -49,7 +51,6 @@ public class ProductFragment extends Fragment {
         firestoreDB = FirebaseFirestore.getInstance();
         productRecyclerView = (RecyclerView) view.findViewById(R.id.Product_RecyclerView);
 
-
         LinearLayoutManager recyclerLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         productRecyclerView.setLayoutManager(recyclerLayoutManager);
 
@@ -59,10 +60,10 @@ public class ProductFragment extends Fragment {
 
         getDocumentsFromCollection();
 
+
         return view;
 
     }
-
 
     @Override
     public void onAttach(Context context) {

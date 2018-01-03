@@ -1,4 +1,4 @@
-package clc_cochin.clc;
+package clc_cochin.clc.Fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -22,6 +22,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.List;
 
 import clc_cochin.clc.Adapter.ServiceAdapter;
+import clc_cochin.clc.R;
 
 
 public class ServiceFragment extends Fragment {
