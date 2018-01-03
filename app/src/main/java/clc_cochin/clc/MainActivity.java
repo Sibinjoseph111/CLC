@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean shouldLoadProductFragOnBackPress = false;
     public static int navItemIndex = 0;
     public FirebaseAuth mAuth;
+    private productRecyclerViewAdapter mAdapter;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private void Load_Product_fragment() {
         navItemIndex = 0;

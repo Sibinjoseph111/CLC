@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.google.android.gms.games.event.Event;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -32,6 +33,7 @@ public class ProductFragment extends Fragment {
     private static final String TAG = "ProductFragment";
     private FirebaseFirestore firestoreDB;
     private RecyclerView productRecyclerView;
+    private productRecyclerViewAdapter madapter;
 
 
     public ProductFragment() {
@@ -48,37 +50,42 @@ public class ProductFragment extends Fragment {
         firestoreDB = FirebaseFirestore.getInstance();
         productRecyclerView = (RecyclerView) view.findViewById(R.id.events_lst);
 
-        LinearLayoutManager recyclerLayoutManager =
-                new LinearLayoutManager(getActivity().getApplicationContext());
+
+        LinearLayoutManager recyclerLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         productRecyclerView.setLayoutManager(recyclerLayoutManager);
 
-        DividerItemDecoration dividerItemDecoration =
-                new DividerItemDecoration(productRecyclerView.getContext(),
-                        recyclerLayoutManager.getOrientation());
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(productRecyclerView.getContext(),
+                                                                    recyclerLayoutManager.getOrientation());
         productRecyclerView.addItemDecoration(dividerItemDecoration);
 
         getDocumentsFromCollection();
 
+
+
         return view;
 
     }
+
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
     }
 
 
-    private void getDocumentsFromCollection() {
+    public void getDocumentsFromCollection() {
         firestoreDB.collection("products").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            for(DocumentSnapshot document : task.getResult()){
+                                Log.d(TAG, document.getId() + " =>" + document.getData());
+                            }
                             List<Event> eventList = new ArrayList<>();
 
-                            productRecyclerViewAdapter recyclerViewAdapter = new
-                                    productRecyclerViewAdapter(eventList,
-                                    getActivity(), firestoreDB);
+                            productRecyclerViewAdapter recyclerViewAdapter = new productRecyclerViewAdapter(eventList, getActivity(), firestoreDB);
+
                             productRecyclerView.setAdapter(recyclerViewAdapter);
 
                         } else {
@@ -91,6 +98,7 @@ public class ProductFragment extends Fragment {
                 .addSnapshotListener(getActivity(), new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+
 
                     }
                 });
