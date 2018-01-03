@@ -12,11 +12,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -24,6 +22,8 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.List;
+
+import clc_cochin.clc.Adapter.ProductAdapter;
 
 
 /**
@@ -33,7 +33,6 @@ public class ProductFragment extends Fragment {
     private static final String TAG = "ProductFragment";
     private FirebaseFirestore firestoreDB;
     private RecyclerView productRecyclerView;
-    private productRecyclerViewAdapter madapter;
 
 
     public ProductFragment() {
@@ -48,7 +47,7 @@ public class ProductFragment extends Fragment {
 
         View view =  inflater.inflate(R.layout.fragment_product, container, false);
         firestoreDB = FirebaseFirestore.getInstance();
-        productRecyclerView = (RecyclerView) view.findViewById(R.id.events_lst);
+        productRecyclerView = (RecyclerView) view.findViewById(R.id.Product_RecyclerView);
 
 
         LinearLayoutManager recyclerLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
@@ -59,8 +58,6 @@ public class ProductFragment extends Fragment {
         productRecyclerView.addItemDecoration(dividerItemDecoration);
 
         getDocumentsFromCollection();
-
-
 
         return view;
 
@@ -82,11 +79,10 @@ public class ProductFragment extends Fragment {
                             //List<Event> eventList = new ArrayList<>();
                             List<DocumentSnapshot> documents = task.getResult().getDocuments();
 
-                            productRecyclerViewAdapter recyclerViewAdapter = new productRecyclerViewAdapter(documents, getActivity(), firestoreDB);
+                            ProductAdapter recyclerViewAdapter = new ProductAdapter(documents, getActivity(), firestoreDB);
 
                             productRecyclerView.setAdapter(recyclerViewAdapter);
 
-                            Toast.makeText(getContext(), "success " + task.getResult().size(), Toast.LENGTH_SHORT).show();
 
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
@@ -94,7 +90,7 @@ public class ProductFragment extends Fragment {
                     }
                 });
 
-        firestoreDB.collection("products")
+        firestoreDB.collection("services")
                 .addSnapshotListener(getActivity(), new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {

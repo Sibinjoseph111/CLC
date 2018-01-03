@@ -16,7 +16,6 @@ import android.view.View;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,8 +27,6 @@ public class MainActivity extends AppCompatActivity {
     FragmentTransaction fragmentTransaction;
     private boolean shouldLoadProductFragOnBackPress = false;
     public static int navItemIndex = 0;
-    public FirebaseAuth mAuth;
-    private productRecyclerViewAdapter mAdapter;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private void Load_Product_fragment() {
         navItemIndex = 0;

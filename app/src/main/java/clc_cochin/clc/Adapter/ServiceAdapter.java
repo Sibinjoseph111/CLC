@@ -1,4 +1,4 @@
-package clc_cochin.clc;
+package clc_cochin.clc.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -12,20 +12,19 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
+import clc_cochin.clc.R;
+
 /**
- * Created by Shyam PC on 29-12-2017.
+ * Created by HP on 03-01-2018.
  */
 
-
-
-public class productRecyclerViewAdapter extends
-        RecyclerView.Adapter<productRecyclerViewAdapter.ViewHolder> {
+public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ViewHolder> {
 
     private List<DocumentSnapshot> documents;
     private Context context;
     private FirebaseFirestore firestoreDB;
 
-    public productRecyclerViewAdapter(List<DocumentSnapshot> list, Context ctx, FirebaseFirestore firestore) {
+    public ServiceAdapter(List<DocumentSnapshot> list, Context ctx, FirebaseFirestore firestore) {
         documents = list;
         context = ctx;
         firestoreDB = firestore;
@@ -37,23 +36,23 @@ public class productRecyclerViewAdapter extends
     }
 
     @Override
-    public productRecyclerViewAdapter.ViewHolder
+    public ServiceAdapter.ViewHolder
     onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_layout, parent, false);
 
-        productRecyclerViewAdapter.ViewHolder viewHolder =
-                new productRecyclerViewAdapter.ViewHolder(view);
+        ServiceAdapter.ViewHolder viewHolder =
+                new ServiceAdapter.ViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(productRecyclerViewAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ServiceAdapter.ViewHolder holder, int position) {
         final int itemPos = position;
         final DocumentSnapshot snapshot = documents.get(position);
         holder.item_name.setText(snapshot.getString("Product"));
-        holder.price.setText(snapshot.getString("Cost"));
+        holder.price.setText(snapshot.getString("Description"));
 
 
     }
@@ -72,4 +71,6 @@ public class productRecyclerViewAdapter extends
 
         }
     }
+
 }
+
