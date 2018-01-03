@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -193,8 +194,8 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onVerificationFailed(FirebaseException e) {
                     // This callback is invoked in an invalid request for verification is made,
-                Toast.makeText(LoginActivity.this,"Please check the code",Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(LoginActivity.this,"Please check the code\n" + e.getMessage(),Toast.LENGTH_SHORT).show();
+                    Log.e("ERROR:", e.getLocalizedMessage());
                 }
 
                 @Override

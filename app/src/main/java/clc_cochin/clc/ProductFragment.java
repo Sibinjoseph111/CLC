@@ -12,10 +12,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.games.event.Event;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -74,12 +77,15 @@ public class ProductFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            List<Event> eventList = new ArrayList<>();
+                            //List<Event> eventList = new ArrayList<>();
+                            List<DocumentSnapshot> documents = task.getResult().getDocuments();
 
                             productRecyclerViewAdapter recyclerViewAdapter = new
-                                    productRecyclerViewAdapter(eventList,
+                                    productRecyclerViewAdapter(documents,
                                     getActivity(), firestoreDB);
                             productRecyclerView.setAdapter(recyclerViewAdapter);
+
+                            Toast.makeText(getContext(), "success " + task.getResult().size(), Toast.LENGTH_SHORT).show();
 
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());

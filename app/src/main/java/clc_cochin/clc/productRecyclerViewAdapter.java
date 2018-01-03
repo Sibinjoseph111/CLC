@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.android.gms.games.event.Event;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
@@ -22,19 +22,19 @@ import java.util.List;
 public class productRecyclerViewAdapter extends
         RecyclerView.Adapter<productRecyclerViewAdapter.ViewHolder> {
 
-    private List<Event> eventsList;
+    private List<DocumentSnapshot> documents;
     private Context context;
     private FirebaseFirestore firestoreDB;
 
-    public productRecyclerViewAdapter(List<Event> list, Context ctx, FirebaseFirestore firestore) {
-        eventsList = list;
+    public productRecyclerViewAdapter(List<DocumentSnapshot> list, Context ctx, FirebaseFirestore firestore) {
+        documents = list;
         context = ctx;
         firestoreDB = firestore;
     }
 
     @Override
     public int getItemCount() {
-        return eventsList.size();
+        return documents.size();
     }
 
     @Override
@@ -52,9 +52,9 @@ public class productRecyclerViewAdapter extends
     @Override
     public void onBindViewHolder(productRecyclerViewAdapter.ViewHolder holder, int position) {
         final int itemPos = position;
-        final Event event = eventsList.get(position);
-        holder.item_name.setText(event.getName());
-        holder.price.setText((int) event.getValue());
+        final DocumentSnapshot snapshot = documents.get(position);
+        holder.item_name.setText(snapshot.getString("Product"));
+        holder.price.setText(snapshot.getString("Cost"));
 
 
     }
